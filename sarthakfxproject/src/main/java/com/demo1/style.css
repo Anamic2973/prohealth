@@ -1,0 +1,224 @@
+.rounded-text-field {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-font-size: 16px;
+    -fx-padding: 5px;
+    -fx-border-color: rgb(0, 0, 0);
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-min-width: 300px;
+
+    -fx-min-height: 39px;
+
+}
+
+.rounded-loginn-button {
+    -fx-background-color: #18610fda;
+    /* Background color */
+    -fx-text-fill: white;
+    /* Text color */
+    -fx-font-size: 16px;
+    /* Font size */
+    -fx-font-weight: bold;
+    /* Font weight */
+    -fx-padding: 10 20;
+    /* Padding inside the button */
+    -fx-border-radius: 15;
+    /* Rounded corners */
+    -fx-background-radius: 15;
+    /* Rounded corners */
+    -fx-pref-width: 200px;
+}
+
+/* Hover effect for the button */
+.rounded-loginn-button:hover {
+    -fx-background-color: #04784c;
+    /* Darker background on hover */
+}
+
+/* Focused effect for the button */
+.rounded-loginn-button:focused {
+    -fx-border-color: #18610fda;
+    /* Border color on focus */
+    -fx-border-width: 2;
+}
+
+
+/* General Styling for DatePicker */
+.date-picker {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 16px;
+    -fx-background-color: #ffffff, #f4f4f4, #e0e0e0;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+    -fx-text-fill: #333333;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #999999;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #e0e0e0;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 10px;
+    -fx-padding: 0 5px;
+}
+
+.date-picker:hover {
+    -fx-background-color: #f0f0f0, #eaeaea, #d0d0d0;
+    -fx-border-color: #aaaaaa;
+}
+
+.date-picker:focused {
+    -fx-background-color: #ffffff, #e4e4e4, #d0d0d0;
+    -fx-border-color: #0078d7;
+    /* Blue border when focused */
+}
+
+.date-picker .text-field {
+    -fx-padding: 5px 10px;
+    -fx-background-color: transparent;
+    -fx-border: none;
+}
+
+/* General Styling for ComboBox */
+.combo-box {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 16px;
+    -fx-background-color: #ffffff, #f4f4f4, #e0e0e0;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+    -fx-text-fill: #333333;
+}
+
+.combo-box:hover {
+    -fx-background-color: #f0f0f0, #eaeaea, #d0d0d0;
+    -fx-border-color: #aaaaaa;
+}
+
+.combo-box:focused {
+    -fx-background-color: #ffffff, #e4e4e4, #d0d0d0;
+    -fx-border-color: #0078d7;
+    /* Blue border when focused */
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #999999;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #e0e0e0;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 10px;
+    -fx-padding: 0 5px;
+}
+
+.combo-box .list-cell {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 16px;
+    -fx-padding: 5px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-text-fill: #333333;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Styling for the Drop-Down List */
+.combo-box-popup {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 0);
+}
+
+.combo-box-base {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 10px;
+}
+
+/* CSS for the thin progress bar */
+.thin-progress-bar {
+    -fx-background-color: transparent;
+    /* Transparent background */
+}
+
+.thin-progress-bar .bar {
+    -fx-background-color: #7adf6f;
+    /* Progress color */
+    -fx-padding: 0;
+    /* No padding */
+    -fx-background-insets: 0;
+    /* No insets */
+    -fx-min-height: 4px;
+    /* Minimum height */
+}
+
+.thin-progress-bar .track {
+    -fx-background-color: #e0e0e0;
+    /* Track color */
+    -fx-padding: 0;
+    /* No padding */
+    -fx-background-insets: 0;
+    /* No insets */
+    -fx-min-height: 2px;
+    /* Minimum height */
+}
+
+.rounded-text-field {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-font-size: 16px;
+    -fx-padding: 5px;
+    -fx-border-color: rgb(0, 0, 0);
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-min-width: 100px;
+
+    -fx-min-height: 39px;
+
+}
+
+.rounded-login-button {
+    -fx-background-color: #ffffffda;
+    -fx-border-width: 0.5px;
+    /* Background color */
+    -fx-text-fill: #00000086;
+    -fx-border-color: #00000061;
+    /* Text color */
+    -fx-font-size: 16px;
+    /* Font size */
+    -fx-font-weight: bold;
+    /* Font weight */
+    -fx-padding: 5;
+    /* Padding inside the button */
+    -fx-border-radius: 15;
+    /* Rounded corners */
+    -fx-background-radius: 15;
+    -fx-pref-width: 100px;
+
+}
+
+/* Hover effect for the button */
+.rounded-login-button:hover {
+    -fx-background-color: #34804c;
+    -fx-text-fill: #ffffffdd;
+    -fx-border-color: #fffbfbe3;
+
+    /* Darker background on hover */
+}
+
+/* Focused effect for the button */
+.rounded-login-button:focused {
+    /* -fx-border-color: #18610fda;*/
+    /* Border color on focus */
+    -fx-border-width: 2;
+}
