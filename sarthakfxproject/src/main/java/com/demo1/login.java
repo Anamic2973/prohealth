@@ -113,6 +113,7 @@ public class login extends Application {
 
         // Group and Scene setup
         Group group = new Group(flc);
+        
         Scene scene = new Scene(group);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
