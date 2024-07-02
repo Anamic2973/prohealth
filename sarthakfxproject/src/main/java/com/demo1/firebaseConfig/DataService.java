@@ -32,7 +32,7 @@ public class DataService {
     // Method to initialize Firebase with service account credentials, i.e json file
     @SuppressWarnings("deprecation")
     private static void initializeFirebase() throws IOException {
-        FileInputStream serviceAccount = new FileInputStream("sarthakfxproject/src/main/resources/java-fx-firebase-store-cbbc3-firebase-adminsdk-d7d9t-38a3c64333.json");
+        FileInputStream serviceAccount = new FileInputStream("sarthakfxproject\\src\\main\\resources\\java-fx-firebase-store-cbbc3-firebase-adminsdk-d7d9t-38a3c64333.json");
 
         // Configure Firebase options with the credentials
         FirebaseOptions options = new FirebaseOptions.Builder()
