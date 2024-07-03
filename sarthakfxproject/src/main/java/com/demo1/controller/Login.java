@@ -176,7 +176,7 @@ public class Login{
                 DocumentSnapshot dataObject = dataService.getData("users", key); // Get user data from Firestore
                 docUserName = dataObject.getString("username"); // Fetch the username from the dataObject
 
-                nav.navigateToQue1();
+                nav.navigateToDashboard();
             } else {
                 System.out.println("Invalid credentials");
                 key = null;

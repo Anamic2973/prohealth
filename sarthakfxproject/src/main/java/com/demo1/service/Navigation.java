@@ -1,19 +1,7 @@
 package com.demo1.service;
 
-import com.demo1.controller.Login;
-import com.demo1.controller.Questionire1;
-import com.demo1.controller.Questionire10;
-import com.demo1.controller.Questionire11;
-import com.demo1.controller.Questionire2;
-import com.demo1.controller.Questionire3;
-import com.demo1.controller.Questionire4;
-import com.demo1.controller.Questionire5;
-import com.demo1.controller.Questionire6;
-import com.demo1.controller.Questionire7;
-import com.demo1.controller.Questionire8;
-import com.demo1.controller.Questionire9;
-import com.demo1.controller.SignUp;
-import com.demo1.controller.Gain_lose;
+import com.demo1.controller.*;
+import com.demo1.controller.Dashboard;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -23,9 +11,9 @@ import javafx.stage.Stage;
 public class Navigation extends Application{
 
     private Stage pr;
-    private Scene loginScene,q1Scene,q2Scene,q3Scene,q4Scene,q5Scene,q6Scene,q7Scene,q8Scene,q9Scene,q10Scene,q11Scene,signupScene,gainLoseScene;
+    private Scene loginScene,q1Scene,q2Scene,q3Scene,q4Scene,q5Scene,q6Scene,q7Scene,q8Scene,q9Scene,q10Scene,q11Scene,signupScene,gainLoseScene,workoutLogScene,dashboardScene,dietLogBookScene;
 
-    //declare page instances
+    //declare page instances, i.e. create obj of pages
     private Login login;
     private Questionire1 que1;
     private Questionire2 que2;
@@ -40,6 +28,9 @@ public class Navigation extends Application{
     private Questionire11 que11;
     private SignUp signup;
     private Gain_lose gainLose;
+    private WorkoutLog workoutLog;
+    private Dashboard dashboard;
+    private DietLogbook dietLogbook;
 
     @Override
     public void start(Stage pr) throws Exception {
@@ -60,6 +51,9 @@ public class Navigation extends Application{
         que11 = new Questionire11(this);
         signup = new SignUp(this);
         gainLose = new Gain_lose(this);
+        workoutLog = new WorkoutLog(this);
+        dashboard = new Dashboard(this);
+        dietLogbook = new DietLogbook(this);
 
         //scenes for each page
         //loginScene
@@ -117,6 +111,18 @@ public class Navigation extends Application{
         //gainLoseScene
         gainLoseScene = new Scene(gainLose.getSplitHBox(),2000,1000);
         gainLoseScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        //workoutLogScene
+        workoutLogScene = new Scene(workoutLog.getGroup(),2000,1000);
+        workoutLogScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        //dietLogBookScene
+        dietLogBookScene = new Scene(dietLogbook.getGroup(),2000,1000);
+        dietLogBookScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        //dashboardScene
+        dashboardScene = new Scene(dashboard.getGroup(),2000,1000);
+        dashboardScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         //setting the initial scene to login
         pr.setScene(loginScene);
@@ -224,5 +230,28 @@ public class Navigation extends Application{
 
     public void navigateToGainLose(){
         pr.setScene(gainLoseScene);
+    }
+
+    public void navigateToWorkoutLog(){
+        workoutLog.setCb1(workoutLog.getCb1());
+        workoutLog.setCb2(workoutLog.getCb2());
+        workoutLog.setCb3(workoutLog.getCb3());
+        workoutLog.setCb4(workoutLog.getCb4());
+        workoutLog.setCb5(workoutLog.getCb5());
+        workoutLog.setCb6(workoutLog.getCb6());
+        workoutLog.setCb7(workoutLog.getCb7());
+        workoutLog.setScrollPane2(workoutLog.getScrollPane2());
+        pr.setScene(workoutLogScene);
+    }
+
+    public void navigateToDashboard(){
+        pr.setScene(dashboardScene);
+    }
+
+    public void navigateToDietLogBook(){
+        dietLogbook.setScrollPane1(dietLogbook.getScrollPane1());
+        dietLogbook.setScrollPane2(dietLogbook.getScrollPane2());
+        dietLogbook.setScrollPane3(dietLogbook.getScrollPane3());
+        pr.setScene(dietLogBookScene);
     }
 }

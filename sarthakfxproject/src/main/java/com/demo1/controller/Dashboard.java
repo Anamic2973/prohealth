@@ -1,15 +1,15 @@
-package demo;
+package com.demo1.controller;
 
-import javafx.application.Application;
+import com.demo1.service.Navigation;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -20,9 +20,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.stage.Screen;
-import javafx.stage.Stage;
 
-public class dashboard extends Application {
+public class Dashboard{
+
+        private Navigation nav;
+        private Group group;
+
+        public Dashboard(Navigation nav){
+                this.nav = nav;
+                initialize();
+        }
+
         private String title = "PROHEALTH"; // User's name variable
         private String userName = "HARSH";
         private int baseGoalValue = 100; // Base goal value variable
@@ -71,8 +79,7 @@ public class dashboard extends Application {
                 return progressRingPane;
         }
 
-        @Override
-        public void start(Stage primaryStage) throws Exception {
+        public void initialize() {
                 // creating drop shadow
                 DropShadow shadow = new DropShadow();
                 shadow.setColor(Color.GRAY);
@@ -208,6 +215,7 @@ public class dashboard extends Application {
                 // toprightbox
                 StackPane rightBoxHolder = new StackPane(); // StackPane to hold rightBox for clickability
                 rightBoxHolder.setOnMouseClicked(event -> {
+                        nav.navigateToDietLogBook();
                         System.out.println("Right box clicked!"); // Example action
                         // Add your logic here for when rightBox is clicked
                 });
@@ -248,7 +256,7 @@ public class dashboard extends Application {
                 box1.setStyle("-fx-background-color: #ffbc46; -fx-background-radius: 45; -fx-border-radius: 45;");
 
                 // Add image to the left side (30% width)
-                Image image1 = new Image("/images/workout.png");
+                Image image1 = new Image("images/log.png");
                 ImageView imageView1 = new ImageView(image1);
                 imageView1.setFitHeight(220);
                 imageView1.setPreserveRatio(true);
@@ -276,6 +284,7 @@ public class dashboard extends Application {
                 box1Holder.setMinHeight(300);
                 box1Holder.setMinWidth(0.48 * screenWidth);
                 box1Holder.setOnMouseClicked(event -> {
+                        nav.navigateToWorkoutLog();
                         System.out.println("Box 1 (Workouts) clicked!"); // Example action
                         // Add your logic here for when box1 is clicked
                 });
@@ -334,14 +343,20 @@ public class dashboard extends Application {
                 mainLayout.getChildren().addAll(dashbox, hboxTopAndRight, gridPane);
                 mainLayout.setSpacing(25);
                 mainLayout.setStyle("-fx-background-color: null");
-                mainLayout.getStylesheets().add(getClass().getResource("/demo/style.css").toExternalForm());
+                //mainLayout.getStylesheets().add(getClass().getResource("/demo/style.css").toExternalForm());
                 mainLayout.setPadding(new Insets(20, 20, 20, 20));
 
+                group = new Group(mainLayout);
+
                 // Create the scene and set it to the stage
-                Scene scene = new Scene(mainLayout, 600, 400); // Set the width and height of the scene
-                primaryStage.setTitle("DASHBOARD");
-                primaryStage.setScene(scene);
-                primaryStage.show();
-                primaryStage.setFullScreen(true);
+                //Scene scene = new Scene(mainLayout, 600, 400); // Set the width and height of the scene
+        }
+
+        public Group getGroup() {
+                return group;
+        }
+
+        public void setGroup(Group group) {
+                this.group = group;
         }
 }

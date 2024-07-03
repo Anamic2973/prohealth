@@ -80,7 +80,7 @@ public class Questionire11{
         
         nextButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event){
-                
+                nav.navigateToDashboard();
             }
         });
 

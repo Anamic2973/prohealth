@@ -1,29 +1,45 @@
-package com.demo1;
+package com.demo1.controller;
 
-import javafx.application.Application;
+import com.demo1.service.Navigation;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
-public class workoutlog extends Application {
+public class WorkoutLog {
 
-    @Override
-    public void start(Stage pr) throws Exception {
+    private Navigation nav;
+    private Group group;
+    private CheckBox cb1;
+    private CheckBox cb2;
+    private CheckBox cb3;
+    private CheckBox cb4;
+    private CheckBox cb5;
+    private CheckBox cb6;
+    private CheckBox cb7;
+    private ScrollPane scrollPane2;
+    
+
+    public WorkoutLog(Navigation nav){
+        this.nav = nav;
+        initialize();
+    }
+    
+    public void initialize() {
 
         ListView<String> listView = new ListView<>();
         listView.getStyleClass().add("list-viewcustomw" + "list-cellcustomw");
@@ -35,8 +51,7 @@ public class workoutlog extends Application {
 
         // right
         // bumbel img
-        ImageView imageView = new ImageView(
-                "/images/dumbell.png");
+        ImageView imageView = new ImageView("/images/dumbell.png");
         imageView.setFitWidth(200); // Set image width
         imageView.setFitHeight(200); // Set image height
         imageView.setPreserveRatio(true);
@@ -225,6 +240,14 @@ public class workoutlog extends Application {
         back.setPadding(new Insets(10, 0, 10, 0));
         back.getStyleClass().add("rounded-customworkout-button");
 
+        back.setOnAction(new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                nav.navigateToDashboard();
+            }
+            
+        });
+
         HBox bottom = new HBox(back, submit);
         bottom.setSpacing(500);
         // leftvbox
@@ -264,15 +287,80 @@ public class workoutlog extends Application {
             }
         });
 
-        Group root = new Group(mainhBox);
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        group = new Group(mainhBox);
 
-        pr.setScene(scene);
-        pr.setHeight(2000);
-        pr.setWidth(2000);
-        pr.show();
+    }
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public CheckBox getCb1() {
+        return cb1;
+    }
+
+    public void setCb1(CheckBox cb1) {
+        this.cb1 = cb1;
+    }
+
+    public CheckBox getCb2() {
+        return cb2;
+    }
+
+    public void setCb2(CheckBox cb2) {
+        this.cb2 = cb2;
+    }
+
+    public CheckBox getCb3() {
+        return cb3;
+    }
+
+    public void setCb3(CheckBox cb3) {
+        this.cb3 = cb3;
+    }
+
+    public CheckBox getCb4() {
+        return cb4;
+    }
+
+    public void setCb4(CheckBox cb4) {
+        this.cb4 = cb4;
+    }
+
+    public CheckBox getCb5() {
+        return cb5;
+    }
+
+    public void setCb5(CheckBox cb5) {
+        this.cb5 = cb5;
+    }
+
+    public CheckBox getCb6() {
+        return cb6;
+    }
+
+    public void setCb6(CheckBox cb6) {
+        this.cb6 = cb6;
+    }
+
+    public CheckBox getCb7() {
+        return cb7;
+    }
+
+    public void setCb7(CheckBox cb7) {
+        this.cb7 = cb7;
+    }
+
+    public ScrollPane getScrollPane2() {
+        return scrollPane2;
+    }
+
+    public void setScrollPane2(ScrollPane scrollPane2) {
+        this.scrollPane2 = scrollPane2;
     }
 
 }
