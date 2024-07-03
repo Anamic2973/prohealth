@@ -2,16 +2,21 @@
     -fx-background-color: rgb(255, 255, 255);
     -fx-text-fill: rgb(0, 0, 0);
     -fx-font-size: 16px;
-    -fx-padding: 5px;
+    -fx-padding: 1px;
     -fx-border-color: rgb(0, 0, 0);
     -fx-border-width: 0.5px;
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
-    -fx-min-width: 300px;
+    -fx-min-width: 50px;
 
-    -fx-min-height: 39px;
+    -fx-min-height: 5px;
 
 }
+
+
+
+
+
 
 .rounded-loginn-button {
     -fx-background-color: #18610fda;
@@ -221,4 +226,351 @@
     /* -fx-border-color: #18610fda;*/
     /* Border color on focus */
     -fx-border-width: 2;
+}
+
+.label {
+    /* -fx-font-size: 20px; */
+    -fx-text-fill: #333;
+
+}
+
+.vbox {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20px;
+}
+
+.hbox {
+    -fx-spacing: 100px;
+}
+
+.left-box {
+    -fx-background-color: lightblue;
+    /* Background color for left VBox */
+    /* -fx-padding: 20px; */
+    /* -fx-alignment: center; */
+    /* Center alignment for the contents */
+}
+
+/* Apply styles to the right VBox */
+.right-box {
+    /* -fx-background-color: lightgreen; */
+    /* Background color for right VBox */
+    /* -fx-padding: 20px; */
+    /* -fx-alignment: center; */
+    /* Center alignment for the contents */
+}
+
+
+/* style.css */
+
+/* Style for the calBox */
+.cal-box {
+    -fx-background-color: #d6e1eb;
+    /* Light blue color */
+    /* -fx-border-color: #000080; */
+    /* Navy border color */
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    /* Rounded corners */
+    -fx-background-radius: 30;
+    /* Rounded background */
+    -fx-padding: 10;
+    /* Padding inside the box */
+}
+
+/* Style for the breakfastBox */
+.breakfast-box {
+    -fx-background-color: #fffacd;
+    /* Lemon chiffon color */
+    /* -fx-border-color: #ff4500; */
+    /* Orange red border color */
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    /* Rounded corners */
+    -fx-background-radius: 30;
+    /* Rounded background */
+    -fx-padding: 10;
+    /* Padding inside the box */
+}
+
+/* Style for the lunchBox */
+.lunch-box {
+    -fx-background-color: #98fb98;
+    /* Pale green color */
+    /* -fx-border-color: #32cd32; */
+    /* Lime green border color */
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    /* Rounded corners */
+    -fx-background-radius: 30;
+    /* Rounded background */
+    -fx-padding: 10;
+    /* Padding inside the box */
+}
+
+/* Style for the dinnerBox */
+.dinner-box {
+    -fx-background-color: #ffdead;
+    /* Navajo white color */
+    /* -fx-border-color: #8b4513; */
+    /* Saddle brown border color */
+    -fx-border-width: 2;
+    -fx-border-radius: 30;
+    /* Rounded corners */
+    -fx-background-radius: 30;
+    /* Rounded background */
+    -fx-padding: 10;
+    /* Padding inside the box */
+}
+
+
+/* style.css */
+
+.scroll-panebreakfast {
+    -fx-background-color: white;
+    /* Set background color */
+    -fx-background-radius: 10;
+    /* Rounded corners */
+    -fx-border-radius: 10;
+    /* Rounded corners for border */
+    -fx-border-color: #fffacd;
+    /* Border color */
+    -fx-border-width: 1;
+    /* Border width */
+}
+
+.scroll-panelunch {
+    -fx-background-color: white;
+    /* Set background color */
+    -fx-background-radius: 10;
+    /* Rounded corners */
+    -fx-border-radius: 10;
+    /* Rounded corners for border */
+    /* -fx-border-color: #98fb98; */
+    /* Border color */
+    -fx-border-width: 1;
+    /* Border width */
+}
+
+.scroll-panedinner {
+    -fx-background-color: white;
+    /* Set background color */
+    -fx-background-radius: 10;
+    /* Rounded corners */
+    -fx-border-radius: 10;
+    /* Rounded corners for border */
+    -fx-border-color: #ffdead;
+    /* Border color */
+    -fx-border-width: 1;
+    /* Border width */
+}
+
+/* styles.css */
+
+/* Apply styles to the ListView */
+.list-view {
+    -fx-font-size: 14px;
+    /* Font size */
+    -fx-control-inner-background: white;
+    /* Background color */
+}
+
+/* Apply padding and spacing within the ListView */
+.list-cell {
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+}
+
+/* Selected item in the ListView */
+.list-cell:selected {
+    -fx-background-color: #4CAF50;
+    /* Green background for selected item */
+    -fx-text-fill: white;
+    /* White text for selected item */
+}
+
+/* Apply styles to the ScrollPane */
+.scroll-pane {
+    -fx-background-color: #fffacd;
+    /* Light gray background */
+    -fx-padding: 10px;
+    -fx-fit-to-width: true;
+    /* Fit content width */
+    -fx-fit-to-height: true;
+    /* Fit content height */
+}
+
+/* styles.css */
+
+/* Style for VBox containing the image and label */
+/* styles.css */
+
+/* Style for VBox containing the image and label */
+.forhbox {
+    -fx-background-color: #fffacd;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+    -fx-border-color: #f4a460;
+    /* Optional: Add a border for better visibility */
+    -fx-border-radius: 20px;
+    -fx-margin-bottom: 20px;
+    /* Add margin below the forhbox */
+}
+
+/* Style for default workout VBox */
+.defaultworkoutVBox {
+    -fx-background-color: #fffacd;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
+    -fx-border-color: #f4a460;
+    /* Optional: Add a border for better visibility */
+    -fx-border-radius: 20px;
+}
+
+.defaultworkouthBox {
+    /* -fx-background-color: #fffacd; */
+    -fx-background-radius: 20px;
+    /* -fx-padding: 20px;
+    -fx-border-color: #f4a460; */
+    /* Optional: Add a border for better visibility */
+    /* -fx-border-radius: 20px; */
+}
+
+
+.rounded-defaultworkout-button {
+    -fx-background-color: #ffffff;
+    ;
+    /* Background color */
+    -fx-text-fill: rgb(0, 0, 0);
+    /* Text color */
+    -fx-font-size: 16px;
+    /* Font size */
+    -fx-font-weight: bold;
+    /* Font weight */
+    -fx-padding: 10 20;
+    /* Padding inside the button */
+    -fx-border-radius: 30;
+    /* Rounded corners */
+    -fx-background-radius: 30;
+    /* Rounded corners */
+    -fx-pref-width: 200px;
+}
+
+/* Hover effect for the button */
+.rounded-defaultworkout-button:hover {
+    -fx-background-color: #f4a460;
+    ;
+    /* Darker background on hover */
+}
+
+/* Focused effect for the button */
+.rounded-defaultworkout-button:focused {
+    -fx-border-color: #f4a460;
+    ;
+    /* Border color on focus */
+    -fx-border-width: 2;
+}
+
+.rounded-customworkout-button {
+    -fx-background-color: #b5d7f5;
+    -fx-border-color: #072138;
+    /* Background color */
+    -fx-text-fill: rgb(0, 0, 0);
+    /* Text color */
+    -fx-font-size: 16px;
+    /* Font size */
+    -fx-font-weight: bold;
+    /* Font weight */
+    -fx-padding: 10 20;
+    /* Padding inside the button */
+    -fx-border-radius: 30;
+    /* Rounded corners */
+    -fx-background-radius: 30;
+    /* Rounded corners */
+    -fx-pref-width: 200px;
+}
+
+/* Hover effect for the button */
+.rounded-customworkout-button:hover {
+    -fx-background-color: #072138;
+    -fx-text-fill: rgb(255, 255, 255);
+
+    /* Darker background on hover */
+}
+
+/* Focused effect for the button */
+.rounded-customworkout-button:focused {
+    -fx-border-color: #072138;
+    ;
+    /* Border color on focus */
+    -fx-border-width: 2;
+}
+
+
+/* styles.css */
+
+/* Style for the checkbox itself */
+/* styles.css */
+
+/* Style for the checkbox itself */
+.custom-checkbox .check-box {
+    -fx-background-color: #ffffff;
+    /* Background color of the checkbox */
+    -fx-border-color: #000000;
+    /* Border color of the checkbox */
+    -fx-border-width: 2px;
+    /* Border width of the checkbox */
+    -fx-border-radius: 2px;
+    /* Border radius of the checkbox */
+}
+
+/* Style for the checkbox text */
+.custom-checkbox .label {
+    -fx-font-size: 18px;
+    /* Font size of the label */
+    /* -fx-padding: 5px; */
+    /* Padding around the label */
+}
+
+/* Style for when the checkbox is selected */
+.custom-checkbox .check-box:selected {
+    -fx-background-color: #000000;
+    /* Background color when selected */
+    -fx-border-color: #ffffff;
+    /* Border color when selected */
+}
+
+.scroll-panecustomw {
+    -fx-background-color: #072138;
+    /* Set background color */
+    -fx-background-radius: 10;
+    /* Rounded corners */
+    -fx-border-radius: 10;
+    /* Rounded corners for border */
+    /* -fx-border-color: #98fb98; */
+    /* Border color */
+    -fx-border-width: 1;
+    /* Border width */
+}
+
+.list-viewcustomw {
+    -fx-font-size: 20px;
+    /* Font size */
+    -fx-control-inner-background: white;
+    /* Background color */
+}
+
+
+/* Apply padding and spacing within the ListView */
+.list-cellcustomw {
+    -fx-padding: 25px;
+    -fx-spacing: 5px;
+}
+
+/* Selected item in the ListView */
+.list-cellcustomw:selected {
+    -fx-background-color: #b5d7f5;
+    /* Green background for selected item */
+    -fx-text-fill: rgb(0, 0, 0);
+    /* White text for selected item */
 }
