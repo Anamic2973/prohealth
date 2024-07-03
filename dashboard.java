@@ -9,11 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -59,7 +59,6 @@ public class dashboard extends Application {
                 backgroundArc.setStroke(Color.LIGHTGRAY);
                 backgroundArc.setStrokeWidth(20);
                 backgroundArc.setFill(null);
-                // percentage = baseGoalValue;
 
                 // Create label for progress percentage
                 Label progressLabel = new Label(String.format("%.0f%%", percentage * 100));
@@ -74,13 +73,13 @@ public class dashboard extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception {
-
                 // creating drop shadow
                 DropShadow shadow = new DropShadow();
                 shadow.setColor(Color.GRAY);
                 shadow.setRadius(15);
                 shadow.setOffsetX(0);
                 shadow.setOffsetY(0);
+
                 // Create a dashboard box (dashbox)
                 HBox dashbox = new HBox();
                 dashbox.setPadding(new Insets(10, 10, 10, 10));
@@ -122,6 +121,13 @@ public class dashboard extends Application {
                                                 "-fx-border-width: 3px; " +
                                                 "-fx-border-radius: 50%;");
                 profileButton.setEffect(shadow);
+
+                // profile navigation
+                profileButton.setOnAction(event -> {
+                        // Define the action to be performed when profileButton is clicked
+                        System.out.println("Profile button clicked!"); // Example action
+                        // Add your logic here
+                });
 
                 // Add the name label and profile button to the dashbox
                 dashbox.getChildren().addAll(nameLabel, profileButton);
@@ -200,9 +206,15 @@ public class dashboard extends Application {
                 topHBox.setPadding(new Insets(50, 50, 50, 50));
 
                 // toprightbox
+                StackPane rightBoxHolder = new StackPane(); // StackPane to hold rightBox for clickability
+                rightBoxHolder.setOnMouseClicked(event -> {
+                        System.out.println("Right box clicked!"); // Example action
+                        // Add your logic here for when rightBox is clicked
+                });
                 VBox rightBox = new VBox();
                 rightBox.setMinWidth(rightBoxWidth);
                 rightBox.setStyle("-fx-background-color: #ffbc46; -fx-background-radius: 45; -fx-border-radius: 45;");
+
                 // Add image to the right box
                 Image image = new Image("/images/log.png");
                 ImageView imageView = new ImageView(image);
@@ -221,6 +233,8 @@ public class dashboard extends Application {
                 rightBox.getChildren().addAll(imageView, rightTextLabel1, rightTextLabel2);
                 rightBox.setSpacing(20); // Adjust spacing as needed
                 rightBox.setPadding(new Insets(50, 50, 50, 50));
+
+                rightBoxHolder.getChildren().add(rightBox);
 
                 // Create a GridPane for the square boxes
                 GridPane gridPane = new GridPane();
@@ -257,6 +271,15 @@ public class dashboard extends Application {
                 box1.getChildren().addAll(imageContainer, textContainer1);
                 box1.setPadding(new Insets(20, 20, 20, 20));
 
+                StackPane box1Holder = new StackPane();
+                box1Holder.getChildren().add(box1);
+                box1Holder.setMinHeight(300);
+                box1Holder.setMinWidth(0.48 * screenWidth);
+                box1Holder.setOnMouseClicked(event -> {
+                        System.out.println("Box 1 (Workouts) clicked!"); // Example action
+                        // Add your logic here for when box1 is clicked
+                });
+
                 // Create the second square box (empty for now)
                 HBox box2 = new HBox();
                 box2.setMinSize(70, 300); // Set the width and height of each box to be square
@@ -287,22 +310,29 @@ public class dashboard extends Application {
                 box2.getChildren().addAll(imageContainer2, textContainer2);
                 box2.setPadding(new Insets(20, 20, 20, 20));
 
+                // Create a clickable StackPane wrapper for box2
+                StackPane box2Holder = new StackPane();
+                box2Holder.getChildren().add(box2);
+                box2Holder.setMinWidth(0.48 * screenWidth);
+                box2Holder.setOnMouseClicked(event -> {
+                        System.out.println("Box 2 (Recipes) clicked!"); // Example action
+                        // Add your logic here for when box2 is clicked
+                });
+
                 // Add the boxes to the GridPane
-                gridPane.add(box1, 0, 0);
-                gridPane.add(box2, 1, 0);
+                gridPane.add(box1Holder, 0, 0);
+                gridPane.add(box2Holder, 1, 0);
 
                 // topHBox and right box holder
                 HBox hboxTopAndRight = new HBox();
-                hboxTopAndRight.getChildren().addAll(topHBox, midBox, rightBox);
+                hboxTopAndRight.getChildren().addAll(topHBox, midBox, rightBoxHolder); // Use rightBoxHolder instead of
+                                                                                       // rightBox
                 hboxTopAndRight.setSpacing(20);
 
                 // Create the main layout with VBox
                 VBox mainLayout = new VBox();
                 mainLayout.getChildren().addAll(dashbox, hboxTopAndRight, gridPane);
                 mainLayout.setSpacing(25);
-                // mainLayout.setStyle("-fx-background-color: linear-gradient(to bottom,
-                // #FFBC46,
-                // white);");
                 mainLayout.setStyle("-fx-background-color: null");
                 mainLayout.getStylesheets().add(getClass().getResource("/demo/style.css").toExternalForm());
                 mainLayout.setPadding(new Insets(20, 20, 20, 20));
@@ -314,17 +344,4 @@ public class dashboard extends Application {
                 primaryStage.show();
                 primaryStage.setFullScreen(true);
         }
-
-        // private method to update values later
-        // private void updateValues(int baseGoal, int food, int exercise) {
-        // this.baseGoalValue = baseGoal;
-        // this.foodValue = food;
-        // this.exerciseValue = exercise;
-
-        // // Update labels
-        // baseGoalLabel.setText("Base Goal: " + baseGoalValue);
-        // foodLabel.setText("Food: " + foodValue);
-        // exerciseLabel.setText("Exercise: " + exerciseValue);
-        // }
-
 }
