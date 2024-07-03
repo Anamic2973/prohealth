@@ -66,10 +66,10 @@ public class Questionire1{
         vdtext.setPadding(new Insets(50, 100, 100, 100));
         
         // next button
-        Button nextbutton = new Button("Next →");
-        nextbutton.getStyleClass().add("rounded-login-button");
+        Button nextButton = new Button("Next →");
+        nextButton.getStyleClass().add("rounded-login-button");
 
-        nextbutton.setOnAction(new EventHandler<ActionEvent>() {
+        nextButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
@@ -78,12 +78,24 @@ public class Questionire1{
             
         });
         
-        VBox logvb = new VBox(nextbutton);
-        logvb.setMinWidth(100);
-        logvb.setPadding(new Insets(30, 100, 10, 530));
+        Button backButton = new Button("← Back");
+        backButton.getStyleClass().add("rounded-login-button");
+
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                nav.navigateToGainLose();
+            }
+            
+        });
+
+        HBox buttonHBox = new HBox(10,backButton, nextButton);
+        buttonHBox.setMinWidth(100);
+        buttonHBox.setPadding(new Insets(30, 100, 10, 530));
         
         // vbox for whole right side
-        VBox vb1 = new VBox(progressBar, q1, vdtext, logvb);
+        VBox vb1 = new VBox(progressBar, q1, vdtext, buttonHBox);
         vb1.setMaxWidth(800);
 
         HBox hb = new HBox(imgv, vb1);

@@ -1,19 +1,25 @@
-package demo;
+package com.demo1.controller;
 
-import javafx.application.Application;
+import com.demo1.service.Navigation;
+
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
-public class choose extends Application {
+public class Gain_lose {
 
-    @Override
-    public void start(Stage primaryStage) {
+    private Navigation nav;
+    private HBox splitHBox;
+
+    public Gain_lose(Navigation nav){
+        this.nav = nav;
+        initialize();
+    }
+
+    public void initialize() {
 
         // Create text for the left and right parts
         Label leftText = new Label("GAIN");
@@ -49,49 +55,27 @@ public class choose extends Application {
 
         // Make the areas clickable
         leftPane.setOnMouseClicked(event -> {
-            navigateLeft(primaryStage);
+            nav.navigateToQue1();
         });
         rightPane.setOnMouseClicked(event -> {
-            navigateRight(primaryStage);
+            nav.navigateToQue1();
         });
 
         Label copyright = new Label("CHOOSE");
         copyright.setPadding(new Insets(0, 0, 100, 0));
 
         // Create an HBox to hold the two panes
-        HBox split = new HBox(leftPane, rightPane);
+        splitHBox = new HBox(leftPane, rightPane);
         HBox.setHgrow(leftPane, javafx.scene.layout.Priority.ALWAYS);
         HBox.setHgrow(rightPane, javafx.scene.layout.Priority.ALWAYS);
-
-        // Create the Scene with the HBox as the root node
-        Scene scene = new Scene(split, 800, 800);
-
-        // Set up the Stage
-        primaryStage.setTitle("CHOOSE");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        primaryStage.setFullScreen(true);
-
     }
 
-    private void navigateRight(Stage pr) {
-        try {
-            // Instantiate the Login class
-            login loginApp = new login();
-            loginApp.start(pr);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public HBox getSplitHBox() {
+        return splitHBox;
     }
 
-    private void navigateLeft(Stage pr) {
-        try {
-            // Instantiate the Login class
-            login loginApp = new login();
-            loginApp.start(pr);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setSplitHBox(HBox splitHBox) {
+        this.splitHBox = splitHBox;
     }
 
 }

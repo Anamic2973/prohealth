@@ -13,6 +13,7 @@ import com.demo1.controller.Questionire7;
 import com.demo1.controller.Questionire8;
 import com.demo1.controller.Questionire9;
 import com.demo1.controller.SignUp;
+import com.demo1.controller.Gain_lose;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -22,7 +23,7 @@ import javafx.stage.Stage;
 public class Navigation extends Application{
 
     private Stage pr;
-    private Scene loginScene,q1Scene,q2Scene,q3Scene,q4Scene,q5Scene,q6Scene,q7Scene,q8Scene,q9Scene,q10Scene,q11Scene,signupScene;
+    private Scene loginScene,q1Scene,q2Scene,q3Scene,q4Scene,q5Scene,q6Scene,q7Scene,q8Scene,q9Scene,q10Scene,q11Scene,signupScene,gainLoseScene;
 
     //declare page instances
     private Login login;
@@ -38,6 +39,7 @@ public class Navigation extends Application{
     private Questionire10 que10;
     private Questionire11 que11;
     private SignUp signup;
+    private Gain_lose gainLose;
 
     @Override
     public void start(Stage pr) throws Exception {
@@ -57,6 +59,7 @@ public class Navigation extends Application{
         que10 = new Questionire10(this);
         que11 = new Questionire11(this);
         signup = new SignUp(this);
+        gainLose = new Gain_lose(this);
 
         //scenes for each page
         //loginScene
@@ -111,6 +114,9 @@ public class Navigation extends Application{
         signupScene = new Scene(signup.getGroup(),2000,1000);
         signupScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
+        //gainLoseScene
+        gainLoseScene = new Scene(gainLose.getSplitHBox(),2000,1000);
+        gainLoseScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         //setting the initial scene to login
         pr.setScene(loginScene);
@@ -214,5 +220,9 @@ public class Navigation extends Application{
 
     public void navigateToSignup(){
         pr.setScene(signupScene);
+    }
+
+    public void navigateToGainLose(){
+        pr.setScene(gainLoseScene);
     }
 }

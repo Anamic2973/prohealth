@@ -156,7 +156,7 @@ public class SignUp{
             System.out.println("User registered successfully");
 
             // directly signup and login and go to questionnair
-            nav.navigateToQue1();
+            nav.navigateToGainLose();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
