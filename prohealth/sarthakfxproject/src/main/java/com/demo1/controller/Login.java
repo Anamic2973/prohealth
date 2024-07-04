@@ -24,8 +24,8 @@ import javafx.scene.media.MediaView;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 
-public class Login{
-    
+public class Login {
+
     private Navigation nav;
     private Group group;
     private TextField emailTextField;
@@ -35,25 +35,27 @@ public class Login{
     public static String key;
     public static String docUserName;
 
-    //Login Constructor
-    public Login(Navigation nav){
+    // Login Constructor
+    public Login(Navigation nav) {
         this.nav = nav;
         dataService = new DataService(); // Initialize DataService instance
         initialize();
     }
 
-    //initialize layout and components
+    // initialize layout and components
     private void initialize() {
         // Load the video
-        String videoPath = getClass().getResource("/images/videoplayback.mp4").toExternalForm();
+        String videoPath = getClass()
+                .getResource("/images/videoplayback.mp4")
+                .toExternalForm();
         Media videoMedia = new Media(videoPath);
         MediaPlayer mediaPlayer = new MediaPlayer(videoMedia);
         MediaView mediaView = new MediaView(mediaPlayer);
         mediaPlayer.setAutoPlay(true);
 
         // Set video properties
-        mediaView.setFitWidth(1000);
-        mediaView.setFitHeight(1000);
+        mediaView.setFitWidth(720);
+        mediaView.setFitHeight(1280);
         mediaView.setPreserveRatio(true);
 
         // Play the video in a loop
@@ -125,7 +127,7 @@ public class Login{
             }
         });
 
-        //vBox for signup and login button
+        // vBox for signup and login button
         VBox buttonVBox = new VBox(10, loginButton, signupButton);
 
         // Social Media Logos
@@ -153,7 +155,7 @@ public class Login{
         logos.setPadding(new Insets(50, 0, 0, 0)); // Vertical gap above the icons
 
         // VBox layout for login components
-        VBox vb = new VBox(login, line, vbEmail, vbPassword, buttonVBox ,logos, copyright);
+        VBox vb = new VBox(login, line, vbEmail, vbPassword, buttonVBox, logos, copyright);
         vb.setPadding(new Insets(150, 300, 150, 0));
 
         // Combine the MediaView and VBox in an HBox
@@ -161,7 +163,6 @@ public class Login{
         flc.setMinHeight(1000);
         flc.setMinWidth(1000);
 
-        
         group = new Group(flc);
     }
 
@@ -171,8 +172,8 @@ public class Login{
             // Authenticate user
             if (dataService.authenticateUser(username, password)) {
                 key = username; // Store the user entered username in the static key
-                
-                //fetching actual username from doc to print success msg
+
+                // fetching actual username from doc to print success msg
                 DocumentSnapshot dataObject = dataService.getData("users", key); // Get user data from Firestore
                 docUserName = dataObject.getString("username"); // Fetch the username from the dataObject
 
@@ -182,33 +183,33 @@ public class Login{
                 key = null;
             }
         } catch (ExecutionException | InterruptedException ex) {
-            //ex.printStackTrace();
+            // ex.printStackTrace();
             System.out.println("enter valid data");
         }
     }
 
-    //method to get group 
-    public Group getGroup(){
+    // method to get group
+    public Group getGroup() {
         return group;
     }
 
-    //get value from emailTextField
-    public String getEmailTextFieldValue(){
+    // get value from emailTextField
+    public String getEmailTextFieldValue() {
         return emailTextField.getText();
     }
 
-    //set value of emailTextField
-    public void setEmailTextFieldValue(String value){
+    // set value of emailTextField
+    public void setEmailTextFieldValue(String value) {
         emailTextField.setText(value);
     }
 
-    //get value from psTextField
-    public String getpsTextFieldValue(){
+    // get value from psTextField
+    public String getpsTextFieldValue() {
         return psTextField.getText();
     }
 
-    //set value of psTextField
-    public void setpsTextFieldValue(String value){
+    // set value of psTextField
+    public void setpsTextFieldValue(String value) {
         psTextField.setText(value);
     }
 

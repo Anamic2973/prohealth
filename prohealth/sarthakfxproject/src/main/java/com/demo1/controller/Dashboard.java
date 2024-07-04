@@ -21,12 +21,12 @@ import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.stage.Screen;
 
-public class Dashboard{
+public class Dashboard {
 
         private Navigation nav;
         private Group group;
 
-        public Dashboard(Navigation nav){
+        public Dashboard(Navigation nav) {
                 this.nav = nav;
                 initialize();
         }
@@ -151,14 +151,14 @@ public class Dashboard{
 
                 // width is 70 percent of screen
                 double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
-                double topBoxWidth = 0.6 * screenWidth;
-                double rightBoxWidth = 0.2 * screenWidth;
+                double topBoxWidth = 0.5 * screenWidth; //
+                double rightBoxWidth = 0.1 * screenWidth; //
                 double midBoxWidth = 0.2 * screenWidth;
 
                 // topbox horizontal
                 HBox topHBox = new HBox();
                 topHBox.setAlignment(Pos.CENTER);
-                topHBox.setMinHeight(600); // Set the height as needed
+                topHBox.setMaxHeight(500); // Set the height as needed //
                 topHBox.setMinWidth(topBoxWidth);
                 topHBox.setPadding(new Insets(10, 20, 10, 20));
                 topHBox.setSpacing(10); // Set the spacing as needed
@@ -184,6 +184,7 @@ public class Dashboard{
 
                 VBox midBox = new VBox(midlabel1, midlabel2, midlabel3);
                 midBox.setMinWidth(midBoxWidth);
+                midBox.setMaxHeight(500); //
                 midBox.setStyle("-fx-background-color: #ffedbf; -fx-background-radius: 45; -fx-border-radius: 45;");
                 midBox.setPadding(new Insets(40, 40, 40, 40));
                 midBox.setAlignment(Pos.CENTER);
@@ -191,7 +192,7 @@ public class Dashboard{
                 // Create a VBox for the values on the right side (60% width)
                 VBox valuesVBox = new VBox();
                 valuesVBox.setAlignment(Pos.CENTER_LEFT);
-                valuesVBox.setSpacing(30);
+                valuesVBox.setSpacing(30); //
 
                 // create labels for dash data
                 baseGoalLabel = new Label("     Base Goal: " + baseGoalValue);
@@ -221,24 +222,26 @@ public class Dashboard{
                 });
                 VBox rightBox = new VBox();
                 rightBox.setMinWidth(rightBoxWidth);
+                rightBox.setMaxHeight(500); //
                 rightBox.setStyle("-fx-background-color: #ffbc46; -fx-background-radius: 45; -fx-border-radius: 45;");
 
                 // Add image to the right box
                 Image image = new Image("/images/log.png");
                 ImageView imageView = new ImageView(image);
-                imageView.setFitHeight(250);
+                imageView.setFitHeight(150); //
                 imageView.setPreserveRatio(true);
 
                 // Add labels to the right box
-                Label rightTextLabel1 = new Label("  LOG");
+                Label rightTextLabel1 = new Label("LOG \nBOOK"); //
                 rightTextLabel1.setStyle(
                                 "-fx-font-size: 70px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
-                Label rightTextLabel2 = new Label("BOOK");
-                rightTextLabel2.setStyle(
-                                "-fx-font-size: 70px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
+                // Label rightTextLabel2 = new Label("BOOK");
+                // rightTextLabel2.setStyle(
+                // "-fx-font-size: 70px; -fx-text-fill: black; -fx-font-family: 'Poppins';
+                // -fx-font-weight: bold;");
 
                 // Add image and labels to the right box
-                rightBox.getChildren().addAll(imageView, rightTextLabel1, rightTextLabel2);
+                rightBox.getChildren().addAll(imageView, rightTextLabel1);
                 rightBox.setSpacing(20); // Adjust spacing as needed
                 rightBox.setPadding(new Insets(50, 50, 50, 50));
 
@@ -246,19 +249,19 @@ public class Dashboard{
 
                 // Create a GridPane for the square boxes
                 GridPane gridPane = new GridPane();
-                gridPane.setAlignment(Pos.CENTER);
+                gridPane.setAlignment(Pos.CENTER_LEFT); //
                 gridPane.setHgap(20); // Horizontal gap between boxes
 
                 // Create the first square box
                 HBox box1 = new HBox();
-                box1.setMinSize(70, 300); // Set the width and height of each box to be square
+                box1.setMinSize(70, 200); // Set the width and height of each box to be square //
                 GridPane.setHgrow(box1, Priority.ALWAYS); // Make boxes expand horizontally
                 box1.setStyle("-fx-background-color: #ffbc46; -fx-background-radius: 45; -fx-border-radius: 45;");
 
                 // Add image to the left side (30% width)
-                Image image1 = new Image("images/log.png");
+                Image image1 = new Image("images/dumbell.png"); //
                 ImageView imageView1 = new ImageView(image1);
-                imageView1.setFitHeight(220);
+                imageView1.setFitHeight(100);
                 imageView1.setPreserveRatio(true);
                 HBox imageContainer = new HBox(imageView1);
                 imageContainer.setAlignment(Pos.CENTER);
@@ -268,21 +271,20 @@ public class Dashboard{
                 // Add text area to the right side (70% width)
                 Label textLabel1 = new Label("  WORKOUTS");
                 textLabel1.setStyle(
-                                "-fx-font-size: 70px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
+                                "-fx-font-size: 40px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
                 VBox textContainer1 = new VBox(textLabel1);
                 textContainer1.setAlignment(Pos.CENTER_LEFT);
-                textContainer1.setPadding(new Insets(10, 10, 10, 20));
                 textContainer1.setPrefWidth(0.7 * box1.getMinWidth()); // 70% width
                 HBox.setHgrow(textContainer1, Priority.ALWAYS);
 
                 // Add image and text containers to box1
                 box1.getChildren().addAll(imageContainer, textContainer1);
-                box1.setPadding(new Insets(20, 20, 20, 20));
+                box1.setPadding(new Insets(20, 20, 20, 100)); //
 
                 StackPane box1Holder = new StackPane();
                 box1Holder.getChildren().add(box1);
-                box1Holder.setMinHeight(300);
-                box1Holder.setMinWidth(0.48 * screenWidth);
+                box1Holder.setMaxHeight(150);
+                box1Holder.setMinWidth(0.28 * screenWidth); //
                 box1Holder.setOnMouseClicked(event -> {
                         nav.navigateToWorkoutLog();
                         System.out.println("Box 1 (Workouts) clicked!"); // Example action
@@ -291,14 +293,14 @@ public class Dashboard{
 
                 // Create the second square box (empty for now)
                 HBox box2 = new HBox();
-                box2.setMinSize(70, 300); // Set the width and height of each box to be square
+                box2.setMinSize(70, 200); // Set the width and height of each box to be square
                 GridPane.setHgrow(box2, Priority.ALWAYS); // Make boxes expand horizontally
                 box2.setStyle("-fx-background-color: #ffbc46; -fx-background-radius: 45; -fx-border-radius: 45;");
 
                 // Add image to the left side (30% width)
                 Image image2 = new Image("/images/recipie.png");
                 ImageView imageView2 = new ImageView(image2);
-                imageView2.setFitHeight(220);
+                imageView2.setFitHeight(100);
                 imageView2.setPreserveRatio(true);
                 HBox imageContainer2 = new HBox(imageView2);
                 imageContainer2.setAlignment(Pos.CENTER);
@@ -306,9 +308,9 @@ public class Dashboard{
                 HBox.setHgrow(imageContainer2, Priority.NEVER);
 
                 // Add text area to the right side (70% width)
-                Label textLabel2 = new Label("   RECIPIES");
+                Label textLabel2 = new Label("RECIPIES");
                 textLabel2.setStyle(
-                                "-fx-font-size: 70px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
+                                "-fx-font-size: 40px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
                 VBox textContainer2 = new VBox(textLabel2);
                 textContainer2.setAlignment(Pos.CENTER_LEFT);
                 textContainer2.setPadding(new Insets(10, 10, 10, 20));
@@ -317,20 +319,60 @@ public class Dashboard{
 
                 // Add image and text containers to box2
                 box2.getChildren().addAll(imageContainer2, textContainer2);
-                box2.setPadding(new Insets(20, 20, 20, 20));
+                box2.setPadding(new Insets(20, 20, 20, 100));
 
                 // Create a clickable StackPane wrapper for box2
                 StackPane box2Holder = new StackPane();
                 box2Holder.getChildren().add(box2);
-                box2Holder.setMinWidth(0.48 * screenWidth);
+                box2Holder.setMinWidth(0.28 * screenWidth);
                 box2Holder.setOnMouseClicked(event -> {
                         System.out.println("Box 2 (Recipes) clicked!"); // Example action
                         // Add your logic here for when box2 is clicked
                 });
 
+                // Create the first square box
+                HBox box3 = new HBox();
+                box3.setMinSize(70, 200); // Set the width and height of each box to be square //
+                GridPane.setHgrow(box3, Priority.ALWAYS); // Make boxes expand horizontally
+                box3.setStyle("-fx-background-color: #ffbc46; -fx-background-radius: 45; -fx-border-radius: 45;");
+
+                // Add image to the left side (30% width)
+                Image image3 = new Image("images/dumbell.png"); //
+                ImageView imageView3 = new ImageView(image3);
+                imageView3.setFitHeight(100);
+                imageView3.setPreserveRatio(true);
+                HBox imageContainer3 = new HBox(imageView3);
+                imageContainer3.setAlignment(Pos.CENTER);
+                imageContainer3.setPrefWidth(0.3 * box1.getMinWidth()); // 30% width
+                HBox.setHgrow(imageContainer3, Priority.NEVER);
+
+                // Add text area to the right side (70% width)
+                Label textLabel3 = new Label("  WORKOUTS");
+                textLabel3.setStyle(
+                                "-fx-font-size: 40px; -fx-text-fill: black; -fx-font-family: 'Poppins'; -fx-font-weight: bold;");
+                VBox textContainer3 = new VBox(textLabel3);
+                textContainer3.setAlignment(Pos.CENTER_LEFT);
+                textContainer3.setPrefWidth(0.7 * box1.getMinWidth()); // 70% width
+                HBox.setHgrow(textContainer3, Priority.ALWAYS);
+
+                // Add image and text containers to box1
+                box3.getChildren().addAll(imageContainer3, textContainer3);
+                box3.setPadding(new Insets(20, 20, 20, 100)); //
+
+                StackPane box3Holder = new StackPane();
+                box3Holder.getChildren().add(box3);
+                box3Holder.setMaxHeight(150);
+                box3Holder.setMinWidth(0.28 * screenWidth);
+                box3Holder.setOnMouseClicked(event -> {
+                        nav.navigateToWorkoutLog();
+                        System.out.println("Box 3 () clicked!"); // Example action
+                        // Add your logic here for when box1 is clicked
+                });
+
                 // Add the boxes to the GridPane
                 gridPane.add(box1Holder, 0, 0);
                 gridPane.add(box2Holder, 1, 0);
+                gridPane.add(box3Holder, 2, 0);
 
                 // topHBox and right box holder
                 HBox hboxTopAndRight = new HBox();
@@ -341,15 +383,16 @@ public class Dashboard{
                 // Create the main layout with VBox
                 VBox mainLayout = new VBox();
                 mainLayout.getChildren().addAll(dashbox, hboxTopAndRight, gridPane);
-                mainLayout.setSpacing(25);
+                mainLayout.setSpacing(20);
                 mainLayout.setStyle("-fx-background-color: null");
-                //mainLayout.getStylesheets().add(getClass().getResource("/demo/style.css").toExternalForm());
+                // mainLayout.getStylesheets().add(getClass().getResource("/demo/style.css").toExternalForm());
                 mainLayout.setPadding(new Insets(20, 20, 20, 20));
 
                 group = new Group(mainLayout);
 
                 // Create the scene and set it to the stage
-                //Scene scene = new Scene(mainLayout, 600, 400); // Set the width and height of the scene
+                // Scene scene = new Scene(mainLayout, 600, 400); // Set the width and height of
+                // the scene
         }
 
         public Group getGroup() {

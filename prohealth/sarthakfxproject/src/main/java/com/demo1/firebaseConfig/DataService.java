@@ -32,14 +32,15 @@ public class DataService {
     // Method to initialize Firebase with service account credentials, i.e json file
     @SuppressWarnings("deprecation")
     private static void initializeFirebase() throws IOException {
-        FileInputStream serviceAccount = new FileInputStream("src\\main\\resources\\java-fx-firebase-store-cbbc3-firebase-adminsdk-d7d9t-38a3c64333.json");
+        FileInputStream serviceAccount = new FileInputStream(
+                "sarthakfxproject\\src\\main\\resources\\java-fx-firebase-store-cbbc3-firebase-adminsdk-d7d9t-38a3c64333.json");
 
         // Configure Firebase options with the credentials
         FirebaseOptions options = new FirebaseOptions.Builder()
-            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            // Uncomment and set the Database URL if needed
-            // .setDatabaseUrl("https:")
-            .build();
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                // Uncomment and set the Database URL if needed
+                // .setDatabaseUrl("https:")
+                .build();
 
         // Initialize Firebase app with the options
         FirebaseApp.initializeApp(options);
@@ -48,7 +49,8 @@ public class DataService {
     }
 
     // Method to add data to a specified collection and document
-    public void addData(String collection, String document, Map<String, Object> data) throws ExecutionException, InterruptedException {
+    public void addData(String collection, String document, Map<String, Object> data)
+            throws ExecutionException, InterruptedException {
         DocumentReference docRef = db.collection(collection).document(document);
         ApiFuture<WriteResult> result = docRef.set(data);
         // Block until the write operation is complete
@@ -56,7 +58,8 @@ public class DataService {
     }
 
     // Method to retrieve data from a specified collection and document
-    public DocumentSnapshot getData(String collection, String document) throws ExecutionException, InterruptedException {
+    public DocumentSnapshot getData(String collection, String document)
+            throws ExecutionException, InterruptedException {
         try {
             DocumentReference docRef = db.collection(collection).document(document);
             ApiFuture<DocumentSnapshot> future = docRef.get();
@@ -70,18 +73,19 @@ public class DataService {
         }
     }
 
-    // Method to authenticate a user by comparing the provided password with the stored password
+    // Method to authenticate a user by comparing the provided password with the
+    // stored password
     public boolean authenticateUser(String username, String password) throws ExecutionException, InterruptedException {
         // Retrieve the document for the user with the given username
         DocumentSnapshot document = db.collection("users").document(username).get().get();
-        try{
+        try {
             if (document.exists()) {
                 // Get the stored password from the document
                 String storedPassword = document.getString("password");
                 // Compare the provided password with the stored password
                 return password.equals(storedPassword);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("enter valid data");
         }
         return false;
