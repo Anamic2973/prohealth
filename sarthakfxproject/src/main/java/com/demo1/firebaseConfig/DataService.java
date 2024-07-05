@@ -49,7 +49,7 @@ public class DataService {
 
     // Method to add data to a specified collection and document
     public void addData(String collection, String document, Map<String, Object> data) throws ExecutionException, InterruptedException {
-        DocumentReference docRef = db.collection(collection).document(document);
+        DocumentReference docRef = db.collection(collection).document(document); //access that collection and that document
         ApiFuture<WriteResult> result = docRef.set(data);
         // Block until the write operation is complete
         result.get();

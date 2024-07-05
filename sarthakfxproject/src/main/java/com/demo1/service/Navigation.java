@@ -131,14 +131,12 @@ public class Navigation extends Application{
         pr.show();
     }
 
-    //method to navigate to home page from login(for time being navigating to que1 page)
+    //method to navigate que1 page
     public void navigateToQue1(){
         login.setEmailTextFieldValue(login.getEmailTextFieldValue());
         login.setpsTextFieldValue(login.getpsTextFieldValue());
         que1.setq1TextFieldValue(que1.getq1TextFieldValue());
         pr.setScene(q1Scene);
-        System.out.println("username fetched: " + Login.docUserName);
-        System.out.println("Value of key: " + Login.key);
     }
 
     //method to navigate to q1 to q2
@@ -246,6 +244,8 @@ public class Navigation extends Application{
 
     public void navigateToDashboard(){
         pr.setScene(dashboardScene);
+        System.out.println("username fetched: " + Login.docUserName);
+        System.out.println("Value of key: " + Login.key);
     }
 
     public void navigateToDietLogBook(){

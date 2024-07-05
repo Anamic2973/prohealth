@@ -74,24 +74,24 @@ public class Login{
         copyright.setPadding(new Insets(190, 0, 0, 0));
 
         // Email Label and TextField
-        Label email = new Label("Enter Email");
+        Label email = new Label("Enter Email or Username");
         email.setFont(Font.font("Poppins", 19));
         email.setOpacity(0.5);
         email.setPadding(new Insets(5));
         emailTextField = new TextField();
-        emailTextField.setPromptText("Enter Email");
+        emailTextField.setPromptText("Enter Email or Username");
         emailTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbEmail = new VBox(email, emailTextField);
         vbEmail.setPadding(new Insets(100, 0, 10, 0));
 
         // Password Label and TextField
-        Label password = new Label("Enter Password");
+        Label password = new Label("Enter Pin");
         password.setFont(Font.font("Poppins", 19));
         password.setOpacity(0.5);
         password.setPadding(new Insets(5));
         psTextField = new PasswordField();
-        psTextField.setPromptText("Enter Password");
+        psTextField.setPromptText("Enter Pin");
         psTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbPassword = new VBox(password, psTextField);

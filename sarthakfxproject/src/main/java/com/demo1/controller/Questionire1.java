@@ -73,6 +73,8 @@ public class Questionire1{
 
             @Override
             public void handle(ActionEvent event) {
+
+                
                 nav.navigateToQue2();
             }
             

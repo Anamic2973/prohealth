@@ -5,14 +5,12 @@ import com.demo1.service.Navigation;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -21,11 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 public class DietLogbook{
     
@@ -179,15 +175,19 @@ public class DietLogbook{
         // Breakfast
         Label breakfast = new Label("Breakfast");
         breakfast.setFont(Font.font("Montserrat", 20));
+        
         Label breakfastcal = new Label("(144)");
         breakfastcal.setFont(Font.font("Montserrat", 20));
         breakfastcal.setPadding(new Insets(0, 30, 0, 0));
+        
         TextField newbreakfastfield = new TextField();
         newbreakfastfield.setPromptText("Enter Breakfast Item");
         newbreakfastfield.getStyleClass().add("rounded-text-field");
+        
         TextField breakfastcalorie = new TextField();
         breakfastcalorie.setPromptText("Enter calorie");
         breakfastcalorie.getStyleClass().add("rounded-text-field");
+        
         Label addFoodB = new Label("Add");
         addFoodB.setFont(Font.font("Montserrat", 20));
         addFoodB.setPadding(new Insets(0, 0, 0, 30));
@@ -198,6 +198,7 @@ public class DietLogbook{
         // newbreakfastfield.clear();
         // }
         // });
+        
         Label removeFoodB = new Label("Remove ");
         removeFoodB.setFont(Font.font("Montserrat", 20));
         removeFoodB.setPadding(new Insets(0, 0, 0, 10));
@@ -228,22 +229,27 @@ public class DietLogbook{
         breakfastBox.setPrefHeight(220);
         breakfastBox.setPadding(new Insets(30, 0, 20, 0));
         breakfastBox.getStyleClass().add("breakfast-box");
+        
         VBox bVBox = new VBox(breakfastBox);
         bVBox.setPadding(new Insets(20, 0, 0, 0));
 
         // Lunch
         Label lunch = new Label("Lunch");
         lunch.setFont(Font.font("Montserrat", 20));
+        
         Label lunchcal = new Label("(144)");
         lunchcal.setFont(Font.font("Montserrat", 20));
         lunchcal.setPadding(new Insets(0, 30, 0, 0));
+        
         TextField newlunchfield = new TextField();
         newlunchfield.setPromptText("Enter Lunch Item");
         newlunchfield.getStyleClass().add("rounded-text-field");
         newlunchfield.setPadding(new Insets(0, 20, 0, 20));
+        
         TextField lcalorie = new TextField();
         lcalorie.setPromptText("Enter calorie");
         lcalorie.getStyleClass().add("rounded-text-field");
+        
         Label addFoodL = new Label("Add");
         addFoodL.setFont(Font.font("Montserrat", 20));
         addFoodL.setPadding(new Insets(0, 0, 0, 30));
@@ -284,22 +290,27 @@ public class DietLogbook{
         lunchvBox.setPrefHeight(220);
         lunchvBox.setPadding(new Insets(20, 0, 20, 0));
         lunchvBox.getStyleClass().add("breakfast-box");
+        
         VBox lVBox = new VBox(lunchvBox);
         lVBox.setPadding(new Insets(20, 0, 0, 0));
 
         // Dinner
         Label dinner = new Label("Dinner");
         dinner.setFont(Font.font("Montserrat", 20));
+        
         Label dinnercal = new Label("(144)");
         dinnercal.setFont(Font.font("Montserrat", 20));
         dinnercal.setPadding(new Insets(0, 30, 0, 0));
+        
         TextField dinnerfield = new TextField();
         dinnerfield.setPromptText("Enter Dinner Item");
         dinnerfield.getStyleClass().add("rounded-text-field");
         dinnerfield.setPadding(new Insets(0, 20, 0, 20));
+        
         TextField dinnercalorie = new TextField();
         dinnercalorie.setPromptText("Enter calorie");
         dinnercalorie.getStyleClass().add("rounded-text-field");
+        
         Label addFoodD = new Label("Add");
         addFoodD.setFont(Font.font("Montserrat", 20));
         addFoodD.setPadding(new Insets(0, 0, 0, 30));
@@ -310,6 +321,7 @@ public class DietLogbook{
         // dinnerfield.clear();
         // }
         // });
+        
         Label removeFoodd = new Label("Remove ");
         removeFoodd.setFont(Font.font("Montserrat", 20));
         removeFoodd.setPadding(new Insets(0, 0, 0, 10));
@@ -322,6 +334,7 @@ public class DietLogbook{
 
         HBox dinnerBox = new HBox(dinner, dinnercal, dinnerfield, dinnercalorie, addFoodD, removeFoodd);
         dinnerBox.setPadding(new Insets(20, 0, 10, 40));
+        
         VBox list3 = new VBox(listView3);
 
         ScrollPane scrollPane3 = new ScrollPane(list3);
@@ -337,6 +350,7 @@ public class DietLogbook{
         dinnervBox.setPrefHeight(220);
         dinnervBox.setPadding(new Insets(20, 0, 20, 0));
         dinnervBox.getStyleClass().add("breakfast-box");
+        
         VBox dVBox = new VBox(dinnervBox);
         dVBox.setPadding(new Insets(20, 0, 10, 0));
 

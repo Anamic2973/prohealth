@@ -5,6 +5,9 @@ import java.util.Map;
 
 import com.demo1.firebaseConfig.DataService;
 import com.demo1.service.Navigation;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.cloud.FirestoreClient;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -69,24 +72,24 @@ public class SignUp{
         copyright.setPadding(new Insets(190, 0, 0, 0));
 
         // Email Label and TextField
-        Label email = new Label("Enter Email");
+        Label email = new Label("Enter Email or Username");
         email.setFont(Font.font("Poppins", 19));
         email.setOpacity(0.5);
         email.setPadding(new Insets(5));
         emailTextField = new TextField();
-        emailTextField.setPromptText("Enter Email");
+        emailTextField.setPromptText("Enter Email or Username");
         emailTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbEmail = new VBox(email, emailTextField);
         vbEmail.setPadding(new Insets(100, 0, 10, 0));
 
         // Password Label and TextField
-        Label password = new Label("Enter Password");
+        Label password = new Label("Enter Pin");
         password.setFont(Font.font("Poppins", 19));
         password.setOpacity(0.5);
         password.setPadding(new Insets(5));
         psTextField = new PasswordField();
-        psTextField.setPromptText("Enter Password");
+        psTextField.setPromptText("Enter Pin");
         psTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbPassword = new VBox(password, psTextField);
@@ -142,21 +145,50 @@ public class SignUp{
         group = new Group(flc);
     }
 
+    int digitCount(int pass){
+            int digitCnt = 0;
+            while(pass != 0){
+                @SuppressWarnings("unused")
+                int temp = pass%10;
+                digitCnt++;
+                pass/=10;
+            }
+            return digitCnt;
+        }
+
     // Method to handle signup action
     private void handleSignup(String username, String password) {
         DataService dataService; // Local instance of DataService
         try {
             dataService = new DataService(); // Initialize DataService instance
-            // Create a map to hold user data
-            Map<String, Object> data = new HashMap<>();
-            data.put("password", password);
-            data.put("username", username);
-            // Add user data to Firestore
-            dataService.addData("users", username, data);
-            System.out.println("User registered successfully");
+            
+            Firestore db = FirestoreClient.getFirestore();
+            DocumentSnapshot document = db.collection("users").document(username).get().get();
+            if (document.exists()){
+                System.out.println("User already exists");
+            }else{
 
-            // directly signup and login and go to questionnair
-            nav.navigateToGainLose();
+                try{
+                    int pin = Integer.parseInt(password);
+                    if(digitCount(pin) < 6){
+                        System.out.println("Pin must be of atleast 6 digits");
+                    }else{
+                        // Create a map to hold user data
+                    Map<String, Object> data = new HashMap<>();
+                    data.put("password", password);
+                    data.put("username", username);
+                    
+                    // Add user data to Firestore
+                    dataService.addData("users", username, data);
+                    System.out.println("User registered successfully");
+    
+                    // directly signup and login and go to questionnair
+                    nav.navigateToQue1();
+                    }
+                }catch(Exception e){
+                    System.out.println("Pin must contain only digits");
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
