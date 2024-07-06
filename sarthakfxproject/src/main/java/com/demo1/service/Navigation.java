@@ -1,7 +1,6 @@
 package com.demo1.service;
 
 import com.demo1.controller.*;
-import com.demo1.controller.Dashboard;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

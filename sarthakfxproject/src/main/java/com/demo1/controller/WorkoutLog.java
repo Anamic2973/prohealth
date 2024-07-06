@@ -272,6 +272,7 @@ public class WorkoutLog {
             if (!workout.isEmpty() && !sets.isEmpty() && !reps.isEmpty()) {
                 String formattedWorkout = workout + " (" + sets + " x " + reps + ")";
                 items.add(formattedWorkout);
+                System.out.println(items);
 
                 // Clear input fields after adding
                 workField.clear();

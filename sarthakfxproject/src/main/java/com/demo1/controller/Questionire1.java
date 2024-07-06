@@ -87,12 +87,12 @@ public class Questionire1{
 
             @Override
             public void handle(ActionEvent event) {
-                nav.navigateToGainLose();
+                nav.navigateToSignup();
             }
             
         });
 
-        HBox buttonHBox = new HBox(10,backButton, nextButton);
+        HBox buttonHBox = new HBox(10, nextButton);
         buttonHBox.setMinWidth(100);
         buttonHBox.setPadding(new Insets(30, 100, 10, 530));
         

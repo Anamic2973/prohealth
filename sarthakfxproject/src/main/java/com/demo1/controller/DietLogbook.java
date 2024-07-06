@@ -360,6 +360,10 @@ public class DietLogbook{
         submitButton.setPadding(new Insets(10, 20, 10, 20));
         submitButton.getStyleClass().add("rounded-login-button");
 
+        submitButton.setOnAction(event -> {
+            
+        });
+
         Button backButton = new Button("Back");
         backButton.setFont(Font.font("Montserrat", 20));
         backButton.setPadding(new Insets(10, 60, 10, 20));
