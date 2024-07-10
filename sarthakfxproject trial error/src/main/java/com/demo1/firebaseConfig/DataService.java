@@ -100,6 +100,7 @@ public class DataService {
         CollectionReference dietsRef = db.collection("users").document(username).collection("diets");
         ApiFuture<WriteResult> result = dietsRef.document(diet.getTimestamp()).set(diet);
         System.out.println("Update time : " + result.get().getUpdateTime());
+        System.out.println("Diet timestamp : "+diet.getTimestamp());
     }
 
     public List<DocumentSnapshot> getUserDataInDescendingOrder(String username, String collectionName, String orderByField) 

@@ -7,9 +7,10 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -21,16 +22,17 @@ public class Questionire6{
 
     private Navigation nav;
     private Group group;
-    private CheckBox checkBox;
+    private RadioButton radioButton1;
+    private RadioButton radioButton2;
 
     public Questionire6(Navigation nav){
         this.nav = nav;
         initialize();
     }
 
-    public void initialize(){
+    public void initialize() {
 
-        ProgressBar progressBar = new ProgressBar(0.54);
+        ProgressBar progressBar = new ProgressBar(0.27);
         progressBar.setPrefWidth(800);
         progressBar.setPrefHeight(0);
         progressBar.getStyleClass().add("thin-progress-bar");
@@ -41,32 +43,41 @@ public class Questionire6{
         imgView.setFitWidth(600);
         imgView.setFitHeight(1000);
 
-        Label q6Label = new Label("What are your primary fitness \ngoals? (Select all that apply)");
-        q6Label.setFont(Font.font("Arial", FontWeight.BOLD, 40));
-        q6Label.setPadding(new Insets(10, 10, 30, 120));
-        q6Label.setOpacity(0.7);
+        Label q3Label = new Label("What are your primary fitness goals?");
+        q3Label.setFont(Font.font("Arial", FontWeight.BOLD, 50));
+        q3Label.setPadding(new Insets(50, 10, 30, 120));
+        q3Label.setOpacity(0.7);
 
-        String[] checkBoxLabels = {"Gain muscle", "Improve cardiovascular health", "Increase flexibility","Enhance overall fitness"};
+        //radio buttons
+        RadioButton radioButton1 = new RadioButton("Gain");
+        radioButton1.setFont(Font.font("Arial", 30));
+        radioButton1.getStyleClass().add("custom-radio-button");
+        
+        RadioButton radioButton2 = new RadioButton("Lose");   
+        radioButton2.setFont(Font.font("Arial", 30));
+        radioButton2.getStyleClass().add("custom-radio-button");
+            
+        // Create a ToggleGroup
+        ToggleGroup toggleGroup = new ToggleGroup();
+        radioButton1.setToggleGroup(toggleGroup);
+        radioButton2.setToggleGroup(toggleGroup);
 
-        VBox checkVBox = new VBox(20);
-        checkVBox.setPadding(new Insets(30, 100, 40, 110));
-
-        for (String checkBoxLabel : checkBoxLabels) {
-            CheckBox checkBox = new CheckBox(checkBoxLabel);
-            checkVBox.getChildren().add(checkBox);
-            checkBox.setFont(Font.font("Arial", 27));
-        }
+        // Add label and radio buttons to the VBox
+        VBox radioButtonVBox = new VBox(20, radioButton1, radioButton2);
+        radioButtonVBox.setPadding(new Insets(15, 100, 100, 115));
 
         Button nextButton = new Button("Next →");
         nextButton.getStyleClass().add("rounded-login-button");
+        
         nextButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event){
-                nav.navigateToQue7();
+                nav.navigateToDashboard();
             }
         });
 
         Button backButton = new Button("← Back");
         backButton.getStyleClass().add("rounded-login-button");
+        
         backButton.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent event){
                     nav.navigateToQue5();
@@ -77,12 +88,13 @@ public class Questionire6{
         buttonHBox.setMinWidth(100);
         buttonHBox.setPadding(new Insets(30, 100, 10, 530));
 
-        VBox combinedVBox = new VBox(progressBar, q6Label, checkVBox ,buttonHBox);
+        VBox combinedVBox = new VBox(progressBar, q3Label, radioButtonVBox, buttonHBox);
         combinedVBox.setMaxWidth(800);
 
         HBox combiHBox = new HBox(imgView, combinedVBox);
 
         group = new Group(combiHBox);
+        
     }
 
     public Group getGroup() {
@@ -93,11 +105,19 @@ public class Questionire6{
         this.group = group;
     }
 
-    public CheckBox getCheckBox() {
-        return checkBox;
+    public RadioButton getRadioButton1() {
+        return radioButton1;
     }
 
-    public void setCheckBox(CheckBox checkBox) {
-        this.checkBox = checkBox;
+    public void setRadioButton1(RadioButton radioButton1) {
+        this.radioButton1 = radioButton1;
+    }
+
+    public RadioButton getRadioButton2() {
+        return radioButton2;
+    }
+
+    public void setRadioButton2(RadioButton radioButton2) {
+        this.radioButton2 = radioButton2;
     }
 }

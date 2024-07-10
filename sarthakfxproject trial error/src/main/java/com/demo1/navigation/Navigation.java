@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Navigation extends Application{
 
     private Stage pr;
-    private Scene loginScene,q1Scene,q2Scene,q3Scene,q4Scene,q5Scene,q6Scene,q7Scene,q8Scene,q9Scene,q10Scene,q11Scene,signupScene,gainLoseScene,workoutLogScene,dashboardScene,dietLogBookScene,historyScene;
+    private Scene loginScene,q1Scene,q2Scene,q3Scene,q4Scene,q5Scene,q6Scene,signupScene,workoutLogScene,dashboardScene,dietLogBookScene,historyScene,profileScene;
 
     //declare page instances, i.e. create obj of pages
     private Login login;
@@ -20,17 +20,12 @@ public class Navigation extends Application{
     private Questionire4 que4;
     private Questionire5 que5;
     private Questionire6 que6;
-    private Questionire7 que7;
-    private Questionire8 que8;
-    private Questionire9 que9;
-    private Questionire10 que10;
-    private Questionire11 que11;
     private SignUp signup;
-    private Gain_lose gainLose;
     private WorkoutLog workoutLog;
     private Dashboard dashboard;
     private DietLogbook dietLogbook;
     private History history;
+    private Profile profile;
 
     @Override
     public void start(Stage pr) throws Exception {
@@ -44,17 +39,12 @@ public class Navigation extends Application{
         que4 = new Questionire4(this);
         que5 = new Questionire5(this);
         que6 = new Questionire6(this);
-        que7 = new Questionire7(this);
-        que8 = new Questionire8(this);
-        que9 = new Questionire9(this);
-        que10 = new Questionire10(this);
-        que11 = new Questionire11(this);
         signup = new SignUp(this);
-        gainLose = new Gain_lose(this);
         workoutLog = new WorkoutLog(this);
         dashboard = new Dashboard(this);
         dietLogbook = new DietLogbook(this);
         history = new History(this);
+        profile = new Profile(this);
 
         //scenes for each page
         //loginScene
@@ -85,33 +75,9 @@ public class Navigation extends Application{
         q6Scene = new Scene(que6.getGroup(),2000,1000); 
         q6Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
-        //q7Scene
-        q7Scene = new Scene(que7.getGroup(),2000,1000); 
-        q7Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-        //q8Scene
-        q8Scene = new Scene(que8.getGroup(),2000,1000); 
-        q8Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-        //q9Scene
-        q9Scene = new Scene(que9.getGroup(),2000,1000); 
-        q9Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-        //q10Scene
-        q10Scene = new Scene(que10.getGroup(),2000,1000); 
-        q10Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-        //q11Scene
-        q11Scene = new Scene(que11.getGroup(),2000,1000); 
-        q11Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
         //signupScene
         signupScene = new Scene(signup.getGroup(),2000,1000);
         signupScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-        //gainLoseScene
-        gainLoseScene = new Scene(gainLose.getSplitHBox(),2000,1000);
-        gainLoseScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         //workoutLogScene
         workoutLogScene = new Scene(workoutLog.getGroup(),2000,1000);
@@ -129,12 +95,20 @@ public class Navigation extends Application{
         historyScene = new Scene(history.getGroup(),2000,1000);
         historyScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
+        //profileScene
+        profileScene = new Scene(profile.getGroup(),2000,1000);
+        profileScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
 
         //setting the initial scene to login
-        pr.setScene(historyScene);
+        pr.setScene(loginScene);
         pr.setTitle("ProHealth");
         pr.getIcons().add(new Image("images/icon_c2w.png"));
         pr.show();
+    }
+
+    public void navigateToSignup(){
+        pr.setScene(signupScene);
     }
 
     //method to navigate que1 page
@@ -173,7 +147,8 @@ public class Navigation extends Application{
     public void navigateToQue5(){
         que4.setHeightTextField(que4.getHeightTextField());
         que4.setWeightTextField(que4.getWeightTextField());
-        que6.setCheckBox(que6.getCheckBox());
+        que6.setRadioButton1(que6.getRadioButton1());
+        que6.setRadioButton2(que6.getRadioButton2());
         pr.setScene(q5Scene);
     }
 
@@ -182,58 +157,14 @@ public class Navigation extends Application{
         que5.setRadioButton2(que5.getRadioButton2());
         que5.setRadioButton3(que5.getRadioButton3());
         que5.setRadioButton4(que5.getRadioButton4());
-        que7.setRadioButton1(que7.getRadioButton1());
-        que7.setRadioButton2(que7.getRadioButton2());
-        que7.setRadioButton3(que7.getRadioButton3());
         pr.setScene(q6Scene);
     }
 
-    public void navigateToQue7(){
-        que6.setCheckBox(que6.getCheckBox());
-        que8.setCheckBox(que8.getCheckBox());
-        pr.setScene(q7Scene);
-    }
-
-    public void navigateToQue8(){
-        que7.setRadioButton1(que7.getRadioButton1());
-        que7.setRadioButton2(que7.getRadioButton2());
-        que7.setRadioButton3(que7.getRadioButton3());
-        que9.setRadioButton1(que9.getRadioButton1());
-        que9.setRadioButton2(que9.getRadioButton2());
-        pr.setScene(q8Scene);
-    }
-
-    public void navigateToQue9(){
-        que8.setCheckBox(que8.getCheckBox());
-        que10.setRadioButton1(que10.getRadioButton1());
-        que10.setRadioButton2(que10.getRadioButton2());
-        que10.setRadioButton3(que10.getRadioButton3());
-        que10.setRadioButton4(que10.getRadioButton4());
-        pr.setScene(q9Scene);
-    }
-
-    public void navigateToQue10(){
-        que9.setRadioButton1(que9.getRadioButton1());
-        que9.setRadioButton2(que9.getRadioButton2());
-        que11.setRadioButton1(que11.getRadioButton1());
-        que11.setRadioButton2(que11.getRadioButton2());
-        pr.setScene(q10Scene);
-    }
-
-    public void navigateToQue11(){
-        que10.setRadioButton1(que10.getRadioButton1());
-        que10.setRadioButton2(que10.getRadioButton2());
-        que10.setRadioButton3(que10.getRadioButton3());
-        que10.setRadioButton4(que10.getRadioButton4());
-        pr.setScene(q11Scene);
-    }
-
-    public void navigateToSignup(){
-        pr.setScene(signupScene);
-    }
-
-    public void navigateToGainLose(){
-        pr.setScene(gainLoseScene);
+    public void navigateToDashboard(){
+        pr.setScene(dashboardScene);
+        // System.out.println("username fetched: " + Login.docUserName);
+        System.out.println("username fetched: " + Login.loggedinUserName);
+        // System.out.println("Value of key: " + Login.key);
     }
 
     public void navigateToWorkoutLog(){
@@ -248,16 +179,14 @@ public class Navigation extends Application{
         pr.setScene(workoutLogScene);
     }
 
-    public void navigateToDashboard(){
-        pr.setScene(dashboardScene);
-        System.out.println("username fetched: " + Login.docUserName);
-        System.out.println("Value of key: " + Login.key);
-    }
-
     public void navigateToDietLogBook(){
         dietLogbook.setScrollPane1(dietLogbook.getScrollPane1());
         dietLogbook.setScrollPane2(dietLogbook.getScrollPane2());
         dietLogbook.setScrollPane3(dietLogbook.getScrollPane3());
         pr.setScene(dietLogBookScene);
+    }
+
+    public void navigateToProfile(){
+        pr.setScene(profileScene);
     }
 }

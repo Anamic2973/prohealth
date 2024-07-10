@@ -1,14 +1,11 @@
 package com.demo1.view;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.demo1.firebaseConfig.DataService;
 import com.demo1.navigation.Navigation;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.firebase.cloud.FirestoreClient;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,21 +23,24 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 
-public class SignUp{
-    
+public class SignUp {
+
     private Navigation nav;
     private Group group;
     private TextField emailTextField;
     private PasswordField psTextField;
+    private ImageView profilePicView;
+    private String profilePicPath; // Variable to store profile picture path
 
-    //Login Constructor
-    public SignUp(Navigation nav){
+    // Constructor
+    public SignUp(Navigation nav) {
         this.nav = nav;
         initialize();
     }
 
-    //initialize layout and components
+    // initialize layout and components
     private void initialize() {
         // Load the video
         String videoPath = getClass().getResource("/images/videoplayback.mp4").toExternalForm();
@@ -58,7 +58,7 @@ public class SignUp{
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
 
-        // Login Label
+        // Signup Label
         Label login = new Label("S I G N U P");
         login.setFont(Font.font("Verdana", 45));
 
@@ -72,30 +72,67 @@ public class SignUp{
         copyright.setPadding(new Insets(190, 0, 0, 0));
 
         // Email Label and TextField
-        Label email = new Label("Enter Email or Username");
+        Label email = new Label("Enter Email");
         email.setFont(Font.font("Poppins", 19));
         email.setOpacity(0.5);
         email.setPadding(new Insets(5));
         emailTextField = new TextField();
-        emailTextField.setPromptText("Enter Email or Username");
+        emailTextField.setPromptText("Enter Email");
         emailTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbEmail = new VBox(email, emailTextField);
         vbEmail.setPadding(new Insets(100, 0, 10, 0));
 
         // Password Label and TextField
-        Label password = new Label("Enter Pin");
+        Label password = new Label("Enter Password");
         password.setFont(Font.font("Poppins", 19));
         password.setOpacity(0.5);
         password.setPadding(new Insets(5));
         psTextField = new PasswordField();
-        psTextField.setPromptText("Enter Pin");
+        psTextField.setPromptText("Enter Password");
         psTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbPassword = new VBox(password, psTextField);
         vbPassword.setPadding(new Insets(10, 0, 50, 0));
 
-        // Login Button
+        // Load the default profile picture
+        Image defaultProfilePic = new Image(getClass().getResourceAsStream("/images/user.png"));
+        profilePicView = new ImageView(defaultProfilePic);
+
+        // Optionally set the dimensions of the ImageView
+        profilePicView.setFitWidth(100);
+        profilePicView.setFitHeight(100);
+        profilePicView.setPreserveRatio(true);
+
+        // Button to edit profile picture
+        Button editPicButton = new Button("Edit");
+        editPicButton.setStyle(
+                "-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 5px 10px; -fx-background-radius: 5px;");
+        editPicButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Choose Profile Picture");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+                File selectedFile = fileChooser.showOpenDialog(null);
+                if (selectedFile != null) {
+                    profilePicPath = selectedFile.toURI().toString(); // Store the path
+                    Image userImage = new Image(profilePicPath);
+                    profilePicView.setImage(userImage);
+                }
+            }
+        });
+
+        // HBox for profile picture and edit button
+        HBox hbProfilePic = new HBox(10, profilePicView, editPicButton);
+        hbProfilePic.setPadding(new Insets(10, 0, 50, 0));
+
+        // VBox layout for email, password, profile picture, and button
+        VBox vbUserDetails = new VBox(vbEmail, vbPassword, hbProfilePic);
+        vbUserDetails.setPadding(new Insets(10, 0, 50, 0));
+
+        // Signup Button
         Button signupButton = new Button("Signup & Login");
         signupButton.getStyleClass().add("rounded-loginn-button");
         signupButton.setPadding(new Insets(10, 50, 10, 50));
@@ -133,89 +170,62 @@ public class SignUp{
         logos.setPadding(new Insets(50, 0, 0, 0)); // Vertical gap above the icons
 
         // VBox layout for login components
-        VBox vb = new VBox(login, line, vbEmail, vbPassword, signupButton, logos, copyright);
-        vb.setPadding(new Insets(150, 300, 150, 0));
+        VBox vb = new VBox(login, line, vbUserDetails, signupButton, logos, copyright);
+        //vb.setPadding(new Insets(150, 300, 150, 0));
+        vb.setPadding(new Insets(0, 300, 150, 0));
 
         // Combine the MediaView and VBox in an HBox
         HBox flc = new HBox(mediaView, vb);
         flc.setMinHeight(1000);
         flc.setMinWidth(1000);
 
-        
         group = new Group(flc);
     }
-
-    int digitCount(int pass){
-            int digitCnt = 0;
-            while(pass != 0){
-                @SuppressWarnings("unused")
-                int temp = pass%10;
-                digitCnt++;
-                pass/=10;
-            }
-            return digitCnt;
-        }
 
     // Method to handle signup action
     private void handleSignup(String username, String password) {
         DataService dataService; // Local instance of DataService
         try {
             dataService = new DataService(); // Initialize DataService instance
-            
-            Firestore db = FirestoreClient.getFirestore();
-            DocumentSnapshot document = db.collection("users").document(username).get().get();
-            if (document.exists()){
-                System.out.println("User already exists");
-            }else{
-
-                try{
-                    int pin = Integer.parseInt(password);
-                    if(digitCount(pin) < 6){
-                        System.out.println("Pin must be of atleast 6 digits");
-                    }else{
-                        // Create a map to hold user data
-                    Map<String, Object> data = new HashMap<>();
-                    data.put("password", password);
-                    data.put("username", username);
-                    
-                    // Add user data to Firestore
-                    dataService.addData("users", username, data);
-                    System.out.println("User registered successfully");
-    
-                    // directly signup and login and go to questionnair
-                    nav.navigateToQue1();
-                    }
-                }catch(Exception e){
-                    System.out.println("Pin must contain only digits");
-                }
-            }
+            // Create a map to hold user data
+            Map<String, Object> data = new HashMap<>();
+            data.put("password", password);
+            data.put("username", username);
+            data.put("profilePicPath", profilePicPath); // Add profile picture path to user data
+            // Add user data to Firestore
+            dataService.addData("users", username, data);
+            Login.loggedinUserName = username;
+            System.out.println("username : " + Login.loggedinUserName);
+            System.out.println("User registered successfully");
+            // directly signup and login and go to questionnair
+            nav.navigateToQue1();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    //method to get group 
-    public Group getGroup(){
+    // method to get group
+    public Group getGroup() {
         return group;
     }
 
-    //get value from emailTextField
-    public String getEmailTextFieldValue(){
+    // get value from emailTextField
+    public String getEmailTextFieldValue() {
         return emailTextField.getText();
     }
 
-    //set value of emailTextField
-    public void setEmailTextFieldValue(String value){
+    // set value of emailTextField
+    public void setEmailTextFieldValue(String value) {
         emailTextField.setText(value);
     }
 
-    //get value from psTextField
-    public String getpsTextFieldValue(){
+    // get value from psTextField
+    public String getpsTextFieldValue() {
         return psTextField.getText();
     }
 
-    //set value of psTextField
-    public void setpsTextFieldValue(String value){
+    // set value of psTextField
+    public void setpsTextFieldValue(String value) {
         psTextField.setText(value);
     }
 

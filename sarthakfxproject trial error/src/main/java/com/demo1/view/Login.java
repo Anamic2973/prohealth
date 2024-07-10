@@ -34,6 +34,8 @@ public class Login{
     private DataService dataService;
     public static String key;
     public static String docUserName;
+    public static String loggedinUserName;
+    
 
     //Login Constructor
     public Login(Navigation nav){
@@ -74,12 +76,12 @@ public class Login{
         copyright.setPadding(new Insets(190, 0, 0, 0));
 
         // Email Label and TextField
-        Label email = new Label("Enter Email or Username");
+        Label email = new Label("Enter Username");
         email.setFont(Font.font("Poppins", 19));
         email.setOpacity(0.5);
         email.setPadding(new Insets(5));
         emailTextField = new TextField();
-        emailTextField.setPromptText("Enter Email or Username");
+        emailTextField.setPromptText("Enter Username");
         emailTextField.getStyleClass().add("rounded-text-field");
 
         VBox vbEmail = new VBox(email, emailTextField);
@@ -176,6 +178,7 @@ public class Login{
                 DocumentSnapshot dataObject = dataService.getData("users", key); // Get user data from Firestore
                 docUserName = dataObject.getString("username"); // Fetch the username from the dataObject
 
+                loggedinUserName = docUserName;
                 nav.navigateToDashboard();
             } else {
                 System.out.println("Invalid credentials");

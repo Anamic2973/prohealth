@@ -506,9 +506,9 @@ public class DietLogbook{
             }
 
             Diet diet = new Diet(breakfastCalorieMap,lunchCalorieMap,dinnerCalorieMap);
-            diet.setTimestamp("2021-08-01T08:00:00Z");   //hardcoded timestamp
+            //diet.setTimestamp("2021-08-01T08:00:00Z");   //hardcoded timestamp
             try {
-                DataService.addDiet("sam", diet);  //hardcoreded username
+                DataService.addDiet(Login.loggedinUserName, diet);  
             } catch (ExecutionException e1) {
                 
                 e1.printStackTrace();

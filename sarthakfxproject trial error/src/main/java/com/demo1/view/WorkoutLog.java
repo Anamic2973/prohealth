@@ -306,9 +306,9 @@ public class WorkoutLog {
                 System.out.println("Exercise: " + entry.getKey() + ", Reps: " + entry.getValue());
             }
             Workout workoutData = new Workout(workoutMap);
-            workoutData.setTimestamp("2021-08-01T08:00:00Z");   //hardcoded timestamp
+            //workoutData.setTimestamp("2021-08-01T08:00:00Z");   //hardcoded timestamp
             try {
-                DataService.addWorkout("sam", workoutData);     //hardcoreded username
+                DataService.addWorkout(Login.loggedinUserName, workoutData);     
             } catch (ExecutionException e) {
                 
                 e.printStackTrace();

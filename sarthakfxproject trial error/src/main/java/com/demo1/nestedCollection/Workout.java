@@ -1,5 +1,7 @@
 package com.demo1.nestedCollection;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class Workout {
@@ -12,7 +14,8 @@ public class Workout {
 
     // Parameterized constructor
     public Workout(Map<String, String> workoutData) {
-        //this.timestamp = timestamp;
+        this.timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT); // Correct format
+
         this.workoutData = workoutData;
     }
 

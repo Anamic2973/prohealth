@@ -30,7 +30,6 @@ public class History {
     private VBox foodLogVBox;
     private VBox workoutLogVBox;
 
-    @SuppressWarnings("unused")
     private Navigation nav;
     private Group group;
 
@@ -65,6 +64,7 @@ public class History {
         // Event handler for the back button
         backButton.setOnAction(event -> {
             // Close the current stage (or navigate to another scene if needed)
+            nav.navigateToDashboard();
 
         });
 
@@ -134,6 +134,7 @@ public class History {
         vbox.setSpacing(10);
         try {
             vbox.getChildren().clear();
+            System.out.println("loggedin user in history : ");
             String username = "sam"; // Replace this with actual logic to get the logged-in username
             List<DocumentSnapshot> dietDocuments = dataService.getUserDataInDescendingOrder(username, "diets",
                     "timestamp");

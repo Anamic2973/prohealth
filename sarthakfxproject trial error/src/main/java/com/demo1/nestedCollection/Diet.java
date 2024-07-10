@@ -1,5 +1,7 @@
 package com.demo1.nestedCollection;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class Diet {
@@ -15,7 +17,8 @@ public class Diet {
 
     // Parameterized constructor
     public Diet(Map<String, Integer> breakfast, Map<String, Integer> lunch, Map<String, Integer> dinner) {
-        //this.timestamp = timestamp;
+        this.timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_INSTANT); // Correct format
+
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;

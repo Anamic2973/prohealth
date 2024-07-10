@@ -132,8 +132,8 @@ public class Dashboard{
                 // profile navigation
                 profileButton.setOnAction(event -> {
                         // Define the action to be performed when profileButton is clicked
-                        System.out.println("Profile button clicked!"); // Example action
-                        // Add your logic here
+                        //System.out.println("Profile button clicked!"); // Example action
+                        nav.navigateToProfile();
                 });
 
                 // Add the name label and profile button to the dashbox
@@ -216,8 +216,7 @@ public class Dashboard{
                 StackPane rightBoxHolder = new StackPane(); // StackPane to hold rightBox for clickability
                 rightBoxHolder.setOnMouseClicked(event -> {
                         nav.navigateToDietLogBook();
-                        System.out.println("Right box clicked!"); // Example action
-                        // Add your logic here for when rightBox is clicked
+                        //System.out.println("Right box clicked!"); // Example action
                 });
                 VBox rightBox = new VBox();
                 rightBox.setMinWidth(rightBoxWidth);
